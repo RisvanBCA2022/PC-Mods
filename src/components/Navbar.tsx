@@ -14,7 +14,6 @@ const Navbar = () => {
         <MaxWidthWrapper>
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">
-              {/*TODO Mobile Nav */}
               <MobileNav />
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
@@ -45,7 +44,7 @@ const Navbar = () => {
                     <p></p>
                   ) : (
                     <Link
-                      href="/sign-up"
+                      href="/user/sign-up"
                       className={buttonVariants({ variant: "ghost" })}
                     >
                       Create account

@@ -1,44 +1,44 @@
 export const PRODUCT_CATEGORIES = [
     {
-        label:"Processors",
-        value:"Processors" as const,
+        label:"Pre-builds",
+        value:"pre-build-pc" as const,
         featured:[
             {
-                name:"builder Picks",
+                name:"Entry Level",
                 href:"#",
-                imageSrc:'/nav/ui-kits/mixed.jpg'
+                imageSrc:'/nav/Pc-collection/entrylevel.jpg'
             },
             {
-                name:"New Pre-Builts",
+                name:"Mid Range Pc's",
                 href:"#",
-                imageSrc:'/nav/ui-kits/blue.jpg'
+                imageSrc:'/nav/Pc-collection/midrange.jpg'
             },
             {
-                name:"Best Buitls",
+                name:"High-End Pcs",
                 href:"#",
-                imageSrc:'/nav/ui-kits/purple.jpg'
+                imageSrc:'/nav/Pc-collection/highend.jpg'
             },
             
         ]
     },
     {
-        label:"icons",
-        value:"icons" as const,
+        label:"Top Rated",
+        value:"Top Rated" as const,
         featured:[
             {
-                name:"Favorite Icon Picks",
+                name:"Trending",
                 href:"#",
-                imageSrc:'/nav/icons/picks.jpg'
+                imageSrc:'/nav/Top-rated/trending.png'
             },
             {
-                name:"New Pre-Builts",
+                name:"Bang for bucks",
                 href:"#",
-                imageSrc:'/nav/icons/new.jpg'
+                imageSrc:'/nav/Top-rated/budget.jpg'
             },
             {
-                name:"Best Buitls",
+                name:"High End for Productivity",
                 href:"#",
-                imageSrc:'/nav/icons/bestsellers.jpg'
+                imageSrc:'/nav/Top-rated/highend.webp'
             },
             
         ]
