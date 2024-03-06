@@ -4,7 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-export function Signup() {
+export function Signin() {
   return (
     <div className="flex max-h-screen items-center justify-center bg-gray-100 p-4 mt-16">
       <div className="w-full max-w-md space-y-8">
@@ -12,7 +12,7 @@ export function Signup() {
           <PencilLineIcon className="h-12 w-12 text-indigo-600" />
         </div>
         <div className="rounded-md bg-white p-8 shadow-sm">
-          <h2 className="text-center text-3xl font-bold text-gray-900">Create New Account</h2>
+          <h2 className="text-center text-3xl font-bold text-gray-900">Sign-In</h2>
           <form action="#" className="mt-8 space-y-6" method="POST">
             <div className="rounded-md shadow-sm -space-y-px">
               <div className="mb-6">
@@ -21,19 +21,12 @@ export function Signup() {
                 </label>
                 <Input className="rounded-t-md focus:border-2 focus:border-indigo-600" id="email-address" placeholder="Email address" type="email" />
               </div>
-              <div className="pb-6" >
+              <div>
                 <label className="sr-only" htmlFor="password">
                   Password
                 </label>
                 <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Password" type="password" />
               </div>
-              <div>
-                <label className="sr-only" htmlFor="password">
-                  Confirm Password
-                </label>
-                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Confirm Password" type="password" />
-              </div>
-              
               
             </div>
             <div className="flex items-center justify-between">
