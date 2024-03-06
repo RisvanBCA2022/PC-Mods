@@ -10,7 +10,7 @@ export default function Home() {
     // <Navbar />
     // </main>/
     <MaxWidthWrapper>
-      <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
+      <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl"  >
         <h1 className="text-6xl font-bold">
           Build Your Dream Pc Online With{" "}
           <span className="text-[#66fcf1]">Pc-Mods</span>
