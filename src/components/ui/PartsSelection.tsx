@@ -1,7 +1,19 @@
-
+'use client'
 import { Button } from "@/components/ui/button"
+import Modalcomponents from "../Modalcomponents"
+import { useState } from "react";
 
 export default function PartsSelection() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+ 
   return (
     <div className="flex max-w-6xl mx-auto my-8 flex-col lg:flex-row">
       <div className="flex flex-col w-full space-y-4">
@@ -12,35 +24,35 @@ export default function PartsSelection() {
             <CpuIcon className="h-6 w-6" />
             <span>Select Processor</span>
           </div>
-          <Button className="bg-indigo-600 text-white">+</Button>
+<Modalcomponents />          
         </div>
         <div className="flex items-center justify-between p-6 border rounded">
           <div className="flex items-center space-x-2">
             <CircuitBoardIcon className="h-6 w-6" />
             <span>Select Motherboard</span>
           </div>
-          <Button className="bg-indigo-600 text-white">+</Button>
+          <Modalcomponents />          
         </div>
         <div className="flex items-center justify-between p-6 border rounded">
           <div className="flex items-center space-x-2">
             <RocketIcon className="h-6 w-6" />
             <span>Select RAM</span>
           </div>
-          <Button className="bg-indigo-600 text-white">+</Button>
+          <Modalcomponents />          
         </div>
         <div className="flex items-center justify-between p-6 border rounded">
           <div className="flex items-center space-x-2">
             <HardDriveIcon className="h-6 w-6" />
             <span>Select Storage 1</span>
           </div>
-          <Button className="bg-indigo-600 text-white">+</Button>
+          <Modalcomponents />          
         </div>
         <div className="flex items-center justify-between p-6 border rounded">
           <div className="flex items-center space-x-2">
             <HardDriveIcon className="h-6 w-6" />
             <span>Select Storage 2</span>
           </div>
-          <Button className="bg-indigo-600 text-white">+</Button>
+          <Modalcomponents />          
         </div>
       </div>
       <div className="flex flex-col w-64 ml-8 space-y-4 mt-5 lg:mt-0">
