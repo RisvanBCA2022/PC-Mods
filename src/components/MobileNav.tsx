@@ -104,7 +104,7 @@ const MobileNav = () => {
               <div className='flow-root'>
                 <Link
                   onClick={() => closeOnCurrent('/sign-in')}
-                  href='/sign-in'
+                  href='/user/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Sign in
                 </Link>
@@ -112,7 +112,7 @@ const MobileNav = () => {
               <div className='flow-root'>
                 <Link
                   onClick={() => closeOnCurrent('/sign-up')}
-                  href='/sign-up'
+                  href='/user/sign-up'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Sign up
                 </Link>
