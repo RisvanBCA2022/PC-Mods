@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PaginationControls = ({ totalPages, currentPage, setCurrentPage }:any) => {
-  const visiblePages = [];
+  const visiblePages: number[] = [];
   const numPagesToShow = 3; // Number of pages to show before and after the current page
   const maxVisiblePages = numPagesToShow * 2 + 1; // Total number of visible pages including current page
 

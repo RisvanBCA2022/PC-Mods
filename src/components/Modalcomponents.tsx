@@ -18,9 +18,13 @@ const Modalcomponents = () => {
     __v: number;
     _id: string;
   }
+  interface CPUData {
+    cpus: CPU[]; // Define the structure of the CPUs array
+  }
+  
 
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState(null);
+const [data, setData] = useState<CPU[] | null>(null);
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(3); 
@@ -41,7 +45,7 @@ const Modalcomponents = () => {
       const response = await axios.get(
         "https://pc-build-api.onrender.com/api/cpu"
       );
-      setData(response.data);
+      setData(response.data?.cpus);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -68,20 +72,11 @@ const Modalcomponents = () => {
     };
   }, [isOpen]);
 
-  const chunkData = (data: CPU[], chunkSize: number): CPU[][] => {
-    const chunkedData: CPU[][] = [];
-    for (let i = 0; i < data.length; i += chunkSize) {
-      chunkedData.push(data.slice(i, i + chunkSize));
-    }
-    console.log(chunkedData);
 
-    return chunkedData;
-  };
-
-  const cpus = data?.cpus;
+  // const cpus = data?.cpus;
 
   // Filter CPUs based on search query
-  const filteredCPUs = cpus?.filter((cpu: any) =>
+  const filteredCPUs = data?.filter((cpu: any) =>
     cpu.model.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -94,12 +89,13 @@ const Modalcomponents = () => {
     return array?.slice((page_number - 1) * page_size, page_number * page_size);
   };
 
-  const paginatedCPUs = paginate(filteredCPUs, currentPage, itemsPerPage);
+  const paginatedCPUs = filteredCPUs ? paginate(filteredCPUs, currentPage, itemsPerPage) : [];
 
   const nextPage = () => setCurrentPage((prevPage) => prevPage + 1);
   const prevPage = () => setCurrentPage((prevPage) => prevPage - 1);
-
-  const totalPages = Math.ceil(filteredCPUs?.length / itemsPerPage);
+  
+  const totalPages = Math.ceil((filteredCPUs?.length || 0) / itemsPerPage);
+  
 
   // Calculate paginated CPUs based on current page
   const indexOfLastCPU = currentPage * itemsPerPage;
@@ -126,6 +122,29 @@ const Modalcomponents = () => {
             </span>
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               {loading ? (
+                <>
+                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="sm:flex sm:items-start">
+                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h3
+                      className="text-lg leading-6 font-medium text-gray-900"
+                      id="modal-title"
+                    >
+                      Select Processor
+                    </h3>
+                    <div className="mt-2">
+                      <input
+                        className="w-full p-2 border border-gray-300 rounded-md"
+                        placeholder="Search for a processor..."
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
                 <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
                   <div className="animate-pulse flex space-x-4">
                     <div className="rounded-full bg-slate-700 h-10 w-10"></div>
@@ -141,6 +160,7 @@ const Modalcomponents = () => {
                     </div>
                   </div>
                 </div>
+                </>
               ) : (
                 <>
                   <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
