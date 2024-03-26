@@ -1,7 +1,8 @@
 'use client'
 import { Button } from "@/components/ui/button"
-import Modalcomponents from "../Modalcomponents"
+import Modalcomponents from "../modals/Modalcomponents"
 import { useState } from "react";
+import GPUModal from "../modals/GpuModal";
 
 export default function PartsSelection() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,13 @@ export default function PartsSelection() {
             <span>Select Motherboard</span>
           </div>
           <Modalcomponents />          
+        </div>
+        <div className="flex items-center justify-between p-6 border rounded">
+          <div className="flex items-center space-x-2">
+            <CircuitBoardIcon className="h-6 w-6" />
+            <span>Select Graphics card</span>
+          </div>
+          <GPUModal />          
         </div>
         <div className="flex items-center justify-between p-6 border rounded">
           <div className="flex items-center space-x-2">

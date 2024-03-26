@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Axiosinstance } from "@/connection/axiosInstance";
 import axios from "axios";
-import PaginationControls from './PaginationControl'
+import PaginationControls from '../PaginationControl'
 
 const Modalcomponents = () => {
   interface CPU {

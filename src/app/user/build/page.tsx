@@ -1,5 +1,5 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import Modalcomponents from '@/components/Modalcomponents'
+import Modalcomponents from '@/components/modals/Modalcomponents'
 import PartsSelection from '@/components/ui/PartsSelection'
 import React from 'react'
 
