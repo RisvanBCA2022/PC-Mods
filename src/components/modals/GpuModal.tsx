@@ -246,7 +246,7 @@ const [data, setData] = useState<CPU[] | null>(null);
                           
                         </div>
                         {/* Select button */}
-                        <Button className="bg-blue-500 hover:bg-indigo-600 text-white">
+                        <Button className="bg-indigo-500 hover:bg-indigo-600 text-white">
                           Select
                         </Button>
                       </div>

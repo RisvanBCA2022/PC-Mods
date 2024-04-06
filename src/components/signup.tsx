@@ -1,10 +1,23 @@
-
+'use client'
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import axios from "axios"
 
 export function Signup() {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const [username,setUsername]=useState('')
+  const handleRegister= async (e:any)=>{{
+    e.preventDefault()
+   const response = await axios.post('http://localhost:5000/api/auth/register',{email,password,username})
+   console.log(response)
+   setEmail("")
+   setPassword("")
+   setUsername("")
+  }}
   return (
     <div className="flex max-h-screen items-center justify-center bg-gray-100 p-4 mt-16">
       <div className="w-full max-w-md space-y-8">
@@ -13,25 +26,25 @@ export function Signup() {
         </div>
         <div className="rounded-md bg-white p-8 shadow-sm">
           <h2 className="text-center text-3xl font-bold text-gray-900">Create New Account</h2>
-          <form action="#" className="mt-8 space-y-6" method="POST">
+          <form action="#" className="mt-8 space-y-6" method="POST" onSubmit={handleRegister}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div className="mb-6">
                 <label className="sr-only" htmlFor="email-address">
                   Email address
                 </label>
-                <Input className="rounded-t-md focus:border-2 focus:border-indigo-600" id="email-address" placeholder="Email address" type="email" />
+                <Input className="rounded-t-md focus:border-2 focus:border-indigo-600" id="email-address" placeholder="Email address" type="email" onChange={(e)=>setEmail(e.target.value)}/>
               </div>
               <div className="pb-6" >
                 <label className="sr-only" htmlFor="password">
                   Password
                 </label>
-                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Password" type="password" />
+                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)} />
               </div>
               <div>
-                <label className="sr-only" htmlFor="password">
-                  Confirm Password
+                <label className="sr-only" htmlFor="username">
+                  Username
                 </label>
-                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Confirm Password" type="password" />
+                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="username" placeholder="Username" type="text" onChange={(e)=>setUsername(e.target.value)} />
               </div>
               
               
