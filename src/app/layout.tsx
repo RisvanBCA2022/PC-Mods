@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from '@/components/Providers'
 import Chat from "@/components/Chat";
-
+import { Toaster } from 'sonner';
 
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en" className="h-full">
       <Providers>
@@ -34,8 +35,10 @@ export default function RootLayout({
           {children}
 
           </div>
+      <Toaster position="top-right" richColors />
         </main>
       </body>
+
       </Providers>
     </html>
   );

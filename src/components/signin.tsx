@@ -1,10 +1,58 @@
-
+'use client'
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-
+import {useState} from 'react'
+import axios from "axios"
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 export function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const router = useRouter();
+
+  const handleError = (err: any) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg: any) =>
+    toast.success(msg, {
+      position: "bottom-left",
+    });
+
+    const handleSubmit = async (e: any) => {
+      e.preventDefault();
+      try {
+        const { data } = await axios.post(
+          "http://localhost:8080/api/auth/login",
+          {
+            email,
+            password
+          }
+        );
+        console.log(data);
+        const { success, message } = data;
+        if (success) {
+          handleSuccess(message);
+          setTimeout(() => {
+            router.push('/');
+          }, 1000);
+        } else {
+          handleError(message);
+        }
+      } catch (error:any) {
+        console.error("An error occurred:", error.response.data);
+        handleError("An error occurred. Please try again.");
+      } finally {
+        setEmail("");
+        setPassword("");
+      }
+    };
+
+
   return (
     <div className="flex max-h-screen items-center justify-center bg-gray-100 p-4 mt-16">
       <div className="w-full max-w-md space-y-8">
@@ -13,19 +61,19 @@ export function Signin() {
         </div>
         <div className="rounded-md bg-white p-8 shadow-sm">
           <h2 className="text-center text-3xl font-bold text-gray-900">Sign-In</h2>
-          <form action="#" className="mt-8 space-y-6" method="POST">
+          <form action="#" className="mt-8 space-y-6" method="POST" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div className="mb-6">
                 <label className="sr-only" htmlFor="email-address">
                   Email address
                 </label>
-                <Input className="rounded-t-md focus:border-2 focus:border-indigo-600" id="email-address" placeholder="Email address" type="email" />
+                <Input className="rounded-t-md focus:border-2 focus:border-indigo-600" id="email-address" placeholder="Email address" type="email" onChange={(e)=>setEmail(e.target.value)} />
               </div>
               <div>
                 <label className="sr-only" htmlFor="password">
                   Password
                 </label>
-                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Password" type="password" />
+                <Input className="rounded-b-md focus:border-2 focus:border-indigo-600" id="password" placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)} />
               </div>
               
             </div>
